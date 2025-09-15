@@ -1,0 +1,12 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^data-raw$
+^\.github$
+^LICENSE\.md$
+^doc$
+^Meta$
+^manual_out$
+^manual_out$
+^manual_out$
+^asp25psplines-manual\.tex$

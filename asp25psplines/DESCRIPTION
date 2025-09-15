@@ -1,0 +1,34 @@
+Package: asp25psplines
+Title: Penalised P-Splines for Gaussian Location-Scale Models
+Version: 0.1.0
+Authors@R: 
+    c(
+      person(given = "Moritz", family = "Dallmann",
+             email = "moritz.dallmann@stud.uni-goettingen.de",
+             role = c("aut","cre")),
+      person(given = "Nicolas", family = "Wackermann",
+             email = "nicolas.wackermann@stud.uni-goettingen.de",
+             role = "aut")
+    )
+Description: 'asp25psplines' implements penalised B-spline regression for univariate
+    Gaussian location-scale models. The conditional mean and the log-scale are
+    represented by smooth functions built from B-spline bases with difference
+    penalties (P-splines). The package provides modular building blocks (knot
+    placement, basis construction, penalty matrices), an alternating fitting
+    scheme for location and scale via penalised weighted least squares, and a
+    high-level wrapper for automatic smoothing parameter selection and optional
+    interval calibration. Convenience helpers are included for prediction,
+    plotting, and concise summaries.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends: 
+    R (>= 4.1)
+Imports:
+    stats,
+    graphics,
+    grDevices
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
