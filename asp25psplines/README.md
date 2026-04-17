@@ -1,17 +1,7 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # asp25psplines
 
 *Gaussian location–scale regression with P-splines*
-
-<!-- badges: start -->
-
-<!-- Replace USER/REPO below -->
-
-[![R-CMD-check](https://github.com/USER/REPO/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/USER/REPO/actions/workflows/R-CMD-check.yaml)
-[![codecov](https://codecov.io/gh/USER/REPO/branch/main/graph/badge.svg)](https://codecov.io/gh/USER/REPO)
-<!-- badges: end -->
 
 **asp25psplines** provides a reproducible implementation of
 semiparametric **location–scale** modeling using **P-splines**.  
@@ -44,8 +34,8 @@ diagnostic tooling for simulation and applied work.
 
 - **Gaussian location–scale** models with B-/P-spline smooths (default:
   cubic, spline order $\ell = 3$).
-- **Smoothing / model selection**: `AIC`, `BIC`, `ML`/`REML` (if
-  implemented), `GCV` (configurable).
+- **Smoothing / model selection**: `AIC`, `BIC`, `ML`/`REML`, `GCV`
+  (configurable).
 - **Prediction** with standard errors and (prediction) intervals.
 - **Diagnostics**: residual checks, coverage summaries (raw
   vs. calibrated), and plotting helpers.
@@ -94,7 +84,6 @@ y  <- rnorm(n, mean = mu, sd = sd)
 dat <- data.frame(x, y)
 
 # 2) Fit location–scale model
-# NOTE: Adapt function/argument names if your actual API differs.
 fit <- fit_asppsplines(
   formula   = y ~ s(x, k = 20, degree = 3),   # location
   sigma     = ~ s(x, k = 20, degree = 3),     # scale
@@ -111,7 +100,7 @@ pred <- predict_asppsplines(
   level    = 0.95
 )
 
-# 4) Simple plot (example)
+# 4) Simple plot
 plot(newx$x, pred$fit, type = "l", xlab = "x", ylab = "y")
 lines(newx$x, pred$lwr, lty = 2)
 lines(newx$x, pred$upr, lty = 2)
@@ -137,8 +126,6 @@ Smoothing parameters are chosen by information criteria or risk proxies
 
 ## API
 
-> Replace/extend to match your package exactly.
-
 - `fit_asppsplines(formula, sigma, data, selection = c("BIC","AIC","GCV","ML"), ...)`  
   Fit location–scale model with P-splines; returns an object of class
   `"asppsplines_fit"`.
@@ -147,9 +134,9 @@ Smoothing parameters are chosen by information criteria or risk proxies
   Predictions with optional intervals and standard errors.
 
 - `coef()`, `fitted()`, `residuals()`, `vcov()`  
-  Standard extractors for model inspection (if implemented).
+  Standard extractors for model inspection.
 
-- `plot()` / `autoplot()` (optional)  
+- `plot()` / `autoplot()`  
   Quick diagnostics and smooth visualization.
 
 ------------------------------------------------------------------------
@@ -158,8 +145,8 @@ Smoothing parameters are chosen by information criteria or risk proxies
 
 - **Residuals**: assess structure/misspecification (e.g., vs. fitted or
   covariates).
-- **Coverage**: compare nominal vs. empirical (raw) coverage; optionally
-  apply calibration procedures (calibrated coverage).
+- **Coverage**: compare nominal vs. empirical coverage and calibration
+  summaries.
 - **Smoothing check**: review chosen $\lambda$ (smoothing parameter)
   under different selectors.
 
@@ -177,7 +164,7 @@ abline(h = 0, lty = 2)
 
 ## Simulation workflow
 
-Large-scale experiments are provided under `inst/sim/` (example names):
+Large-scale experiments are provided under `inst/sim/`:
 
 - `inst/sim/load_and_run_big_sim_fast.R` – load package functions and
   run the full simulation.
@@ -238,7 +225,7 @@ For development:
 devtools::document()
 devtools::test()
 devtools::check()
-# optional site:
+# pkgdown site (optional):
 # pkgdown::build_site()
 ```
 
